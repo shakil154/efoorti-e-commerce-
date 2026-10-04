@@ -1,0 +1,231 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Inter Tight', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Dynamic Brand Theme (Storefront & User Dashboard)
+   Maps the hardcoded default orange brand colors (#f15a24) and accents
+   to dynamic CSS custom properties controlled by the Admin Appearance engine.
+   ────────────────────────────────────────────────────────────────────────── */
+:root {
+    --brand-primary: #f97316;
+    --brand-primary-hover: color-mix(in srgb, var(--brand-primary) 85%, black);
+    --brand-primary-light: color-mix(in srgb, var(--brand-primary) 12%, white);
+    --brand-primary-border: color-mix(in srgb, var(--brand-primary) 30%, white);
+    --brand-primary-shadow: color-mix(in srgb, var(--brand-primary) 25%, transparent);
+    --brand-primary-subtle: color-mix(in srgb, var(--brand-primary) 10%, transparent);
+}
+
+/* Background overrides */
+.bg-\[\#f15a24\],
+[class*="bg-[#f15a24]"]:not([class*="/"]) {
+    background-color: var(--brand-primary) !important;
+}
+.bg-\[\#f15a24\]\/10,
+[class*="bg-[#f15a24]/10"] {
+    background-color: var(--brand-primary-subtle, color-mix(in srgb, var(--brand-primary) 10%, transparent)) !important;
+}
+.bg-\[\#f15a24\]\/5,
+[class*="bg-[#f15a24]/5"] {
+    background-color: color-mix(in srgb, var(--brand-primary) 5%, transparent) !important;
+}
+.bg-\[\#f15a24\]\/20,
+[class*="bg-[#f15a24]/20"] {
+    background-color: color-mix(in srgb, var(--brand-primary) 20%, transparent) !important;
+}
+
+/* Text color overrides */
+.text-\[\#f15a24\],
+[class*="text-[#f15a24]"]:not([class*="/"]) {
+    color: var(--brand-primary) !important;
+}
+.text-\[\#f15a24\]\/40,
+[class*="text-[#f15a24]/40"] {
+    color: color-mix(in srgb, var(--brand-primary) 40%, transparent) !important;
+}
+
+/* Border overrides */
+.border-\[\#f15a24\],
+[class*="border-[#f15a24]"]:not([class*="/"]) {
+    border-color: var(--brand-primary) !important;
+}
+.border-\[\#f15a24\]\/50,
+[class*="border-[#f15a24]/50"] {
+    border-color: color-mix(in srgb, var(--brand-primary) 50%, transparent) !important;
+}
+
+/* Link text and hover overrides */
+:root {
+    --brand-link: var(--brand-primary);
+    --brand-link-hover: var(--brand-primary-hover);
+}
+
+a.text-brand-link,
+.text-brand-link,
+a.text-\[\#f15a24\]:not(.header-link):not(.cat-nav-link),
+button.text-\[\#f15a24\],
+a[class*="text-[#f15a24]"]:not([class*="bg-"]):not([class*="rounded-full"]):not([class*="shadow"]):not([class*="border-"]):not(.header-link):not(.cat-nav-link),
+button[class*="text-[#f15a24]"]:not([class*="bg-"]):not([class*="rounded-full"]):not([class*="shadow"]):not([class*="border-"]) {
+    color: var(--brand-link) !important;
+}
+
+a.text-brand-link:hover,
+.text-brand-link:hover,
+a.text-\[\#f15a24\]:not(.header-link):not(.cat-nav-link):hover,
+button.text-\[\#f15a24\]:hover,
+a[class*="text-[#f15a24]"]:not([class*="bg-"]):not(.header-link):not(.cat-nav-link):hover,
+button[class*="text-[#f15a24]"]:not([class*="bg-"]):hover,
+.hover\:text-\[\#f15a24\]:not(.header-link):not(.cat-nav-link):hover,
+[class*="hover:text-[#f15a24]"]:not(.header-link):not(.cat-nav-link):hover {
+    color: var(--brand-link-hover) !important;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Header Navigation Bar (Template 2 & Template 1 Protection)
+   Ensures header nav text NEVER turns dark or invisible on dark backgrounds.
+   ────────────────────────────────────────────────────────────────────────── */
+.header-nav-template-2,
+.header-category-bar {
+    background-color: var(--header-nav-bg, #0A2A22) !important;
+}
+
+.header-nav-template-2 .cat-nav-link,
+.header-category-bar .cat-nav-link,
+.header-nav-template-2 a.cat-nav-link,
+.header-category-bar a.cat-nav-link {
+    color: var(--header-nav-text, #ffffff) !important;
+}
+
+.header-nav-template-2 .cat-nav-link:hover,
+.header-category-bar .cat-nav-link:hover,
+.header-nav-template-2 a.cat-nav-link:hover,
+.header-category-bar a.cat-nav-link:hover {
+    color: var(--header-nav-hover, #fbbf24) !important;
+}
+
+/* Subcategories flyout card (which has white background) */
+.header-nav-template-2 .subcat-flyout a,
+.header-category-bar .subcat-flyout a {
+    color: #374151 !important;
+}
+.header-nav-template-2 .subcat-flyout a:hover,
+.header-category-bar .subcat-flyout a:hover {
+    color: var(--brand-primary, #f97316) !important;
+    background-color: #fef3c7 !important;
+}
+
+/* Hover overrides */
+.hover\:bg-\[\#d94b1a\]:hover,
+.hover\:bg-\[\#d94a1a\]:hover,
+.hover\:bg-\[\#f15a24\]:hover,
+[class*="hover:bg-[#d94"]:hover {
+    background-color: var(--brand-primary-hover) !important;
+}
+.hover\:border-\[\#f15a24\]\/50:hover,
+[class*="hover:border-[#f15a24]/50"]:hover {
+    border-color: color-mix(in srgb, var(--brand-primary) 50%, transparent) !important;
+}
+
+/* Focus and ring states */
+.focus\:border-\[\#f15a24\]:focus,
+.focus-within\:border-\[\#f15a24\]:focus-within {
+    border-color: var(--brand-primary) !important;
+}
+.focus\:ring-\[\#f15a24\]:focus {
+    --tw-ring-color: var(--brand-primary) !important;
+}
+.focus\:ring-\[\#f15a24\]\/20:focus,
+.focus-within\:ring-\[\#f15a24\]\/20:focus-within,
+.ring-\[\#f15a24\]\/20 {
+    --tw-ring-color: color-mix(in srgb, var(--brand-primary) 20%, transparent) !important;
+}
+
+/* Gradient overrides */
+.from-\[\#f15a24\] {
+    --tw-gradient-from: var(--brand-primary) var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: color-mix(in srgb, var(--brand-primary) 75%, white) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position)) !important;
+}
+.from-\[\#f15a24\]\/10 {
+    --tw-gradient-from: color-mix(in srgb, var(--brand-primary) 10%, transparent) var(--tw-gradient-from-position) !important;
+}
+.to-\[\#d94a1a\] {
+    --tw-gradient-to: var(--brand-primary-hover) var(--tw-gradient-to-position) !important;
+}
+.to-orange-400 {
+    --tw-gradient-to: color-mix(in srgb, var(--brand-primary) 70%, white) var(--tw-gradient-to-position) !important;
+}
+.to-orange-50 {
+    --tw-gradient-to: var(--brand-primary-light) var(--tw-gradient-to-position) !important;
+}
+
+/* Light accents in dashboard / storefront */
+.bg-orange-50 {
+    background-color: var(--brand-primary-light) !important;
+}
+.hover\:bg-orange-50:hover {
+    background-color: var(--brand-primary-light) !important;
+}
+
+/* Shadow overrides */
+.shadow-\[\#f15a24\]\/20,
+.shadow-\[\#f15a24\]\/30,
+.shadow-\[\#f15a24\]\/40 {
+    --tw-shadow-color: var(--brand-primary-shadow) !important;
+}
+
+/* Native input accent */
+.accent-\[\#f15a24\],
+.accent-orange-500 {
+    accent-color: var(--brand-primary) !important;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Floating Sticky Header Animation
+   Silky slide-down and fade-in reveal when user scrolls into sticky dock mode.
+   ────────────────────────────────────────────────────────────────────────── */
+@keyframes headerSlideDownFade {
+    0% {
+        opacity: 0;
+        transform: translateY(-16px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (min-width: 640px) {
+    @keyframes headerSlideDownFade {
+        0% {
+            opacity: 0;
+            transform: translateY(-16px) scale(0.98);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+}
+
+.animate-header-reveal {
+    animation: headerSlideDownFade 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+    will-change: transform, opacity;
+}
+
